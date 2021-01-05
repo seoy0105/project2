@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>해피베이비</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+    <script>
+        $(document).ready(function() {
+            mobile_menu();
+        });
+
+        function mobile_menu() {
+            /* 변수 선언 */
+            var $menu = null;
+            var $left_gnb = null; // 영역 전체
+            var $depth1_wrap = null;
+            var $depth1 = null;
+            var $depth1_btn = null;
+
+            /* 시작 함수 */
+            function start() {
+                init();
+                init_event();
+            }
+            /* 변수 초기화 함수 */
+            function init() {
+                $menu = $('.mbtn');
+                $left_gnb = $('.left_gnbWrap'); // 영역 전체
+                $depth1_wrap = $('.left_gnb>li');
+                $depth1 = $depth1_wrap.children('ul');
+                $depth1_btn = $depth1_wrap.children('a');
+            }
+            /* 이벤트 함수 */
+            function init_event() {
+
+                /* 모바일 메뉴 버튼 클릭했을때 모바일 메뉴영역 나오게 하기 */
+                $menu.click(function(event) {
+                    event.preventDefault();
+                    $left_gnb.addClass('on');
+                });
+
+                /* x버튼 눌렀을때 모바일 메뉴 닫기 */
+                $('.close').click(function(event) {
+                    event.preventDefault();
+
+                    $left_gnb.removeClass('on');
+
+                    // x버튼 누르면 시간차 약간두고 소메뉴 닫히게 하기
+                    setTimeout(function() {
+                        $depth1_btn.removeClass('on');
+                        $depth1.slideUp();
+                    }, 300)
+                });
+
+                /* depth1의 각메뉴 클릭시 depth2 나오게 하기 */
+                $depth1_btn.click(function(event) {
+                    event.preventDefault();
+                    var $this = $(this);
+                    var $this_ul = $this.siblings('ul');
+
+                    var check = $this.hasClass('on');
+                    if (check) {
+                        $this.removeClass('on');
+                        $this_ul.stop(true, true).slideUp();
+                    } else {
+                        $depth1_btn.removeClass('on');
+                        $depth1.stop().slideUp();
+                        $this.addClass('on');
+                        $this_ul.stop(true, true).slideDown();
+                    }
+                });
+
+                /* 디바이스 크기 변경시 모바일 메뉴영역 숨기기 */
+                $(window).resize(function() {
+                    $left_gnb.removeClass('on');
+                });
+            }
+
+            start(); // 시작 호출
+        }
+    </script>
+    <script src="js/jquery-v1.10.2.min.js" type="text/javascript"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/flickerplate.min.js" type="text/javascript"></script>
+    
+    <script>
+	$(document).ready(function(){
+		
+		$('.flicker-example').flicker();
+	});
+	</script>
+     <script src="jquery-3.1.1.min.js"></script>
+     <script> 
+       $(function(){
+           $('.menu2>li').mouseover(function(){
+             $(this).children('.subMenu').stop().slideDown();
+               
+           });
+           $('.menu2>li').mouseleave(function(){
+               $(this).children('.subMenu').stop().slideUp();
+               
+           });
+           
+           
+       });
+    </script>
+    </head>
+<body>
+    <div id=wrap>
+        <header id="header">
+            <div class="inner">
+                <div class="top_header">
+                    <div class="mbtn">
+                     <a href="#">   <img src="img/btn.png"></a>
+                    </div>
+                             <nav class="left_gnbWrap">
+            <a href="#" class="close">close</a>
+            <ul class="left_gnb">
+                <li>
+                    <a href="#">해피베이비</a>
+                    <ul>
+                        <li><a href="#">해피베이비 소개</a></li>
+                        <li><a href="#">대표원장 인사말</a></li>
+                        <li><a href="#">가맹점 안내</a></li>
+                        <li><a href="#">가맹점 개설 안내</a></li>
+                        <li><a href="#">제휴 및 제안</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">산후조리 서비스</a>
+                    <ul>
+                        <li><a href="#">맞춤형 산후 관리사</a></li>
+                        <li><a href="#">산모 서비스</a></li>
+                        <li><a href="#">신생아 서비스</a></li>
+                        <li><a href="#">기타 서비스</a></li>
+                        <li><a href="#">서비스 이용요금</a></li>
+                        <li><a href="#">산후조리 이용후기</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">산후조리 정보</a>
+                    <ul>
+                        <li><a href="#">산모 클리닉</a></li>
+                        <li><a href="#">신생아 클리닉</a></li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">산후조리 예약</a>
+                    <ul>
+                        <li><a href="#">온라인 예약</a></li>
+                        <li><a href="#">예약 확인</a></li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">교육원</a>
+                    <ul>
+                        <li><a href="#">전문강사 소개</a></li>
+                        <li><a href="#">산후관리사 교육</a></li>
+                        <li><a href="#">해피베이비 산모교실</a></li>
+                        <li><a href="#">교육 및 행사</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">고객센터</a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자주하는 질문</a></li>
+                        <li><a href="#">고객 불편사항 접수</a></li>
+                    
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+                 
+                    
+                    
+                    
+                    
+                    
+                    <div class="logo">
+                        <a href="sub.html"><img src="img/logo.png"></a>
+                    </div>
+
+                    <div class="m_right">
+                        <div class="login">
+                            <img src="img/login.png">
+                        </div>
+                        <ul class="menu">
+                            <li>해피베이비센터</li>
+                            <li>1:1 진료상담</li>
+                            <!--clear-->
+                        </ul>
+                    </div>
+                    <!--clear-->
+                </div>
+
+                <div class="bottom_header">
+
+                    <ul class="menu2">
+                        <li><a href="#">해피베이비소개</a>
+                <ul class="subMenu">
+                        <li><a href="#">대표원장 인사말</a></li>
+                        <li><a href="#">가맹점 안내</a></li>
+                        <li><a href="#">가맹점 개설 안내</a></li>
+                        <li><a href="#">제휴 및 제안</a></li>
+                    </ul>       
+                       
+                       </li>
+                        
+                        <li><a href="#">맞춤형 산후 관리사</a>
+                       <ul class="subMenu">
+                        <li><a href="#">산모 서비스</a></li>
+                        <li><a href="#">신생아 서비스</a></li>
+                        <li><a href="#">기타 서비스</a></li>
+                        <li><a href="#">서비스 이용요금</a></li>
+                        <li><a href="#">산후조리 이용후기</a></li>
+                    </ul>
+                       </li>
+                       
+                        <li><a href="#">산모 서비스</a></li>
+                       
+                        <li><a href="#">신생아 서비스</a>
+                        </li>
+                        <li><a href="#">기타 서비스</a><ul class="subMenu">
+                        <li><a href="#">산모 클리닉</a></li>
+                        <li><a href="#">신생아 클리닉</a></li>
+                        <li><a href="#">산후조리 정보</a></li>
+                        
+                    </ul></li>
+                        <li><a href="#">서비스 이용요금</a></li>
+                        <li><a href="#">산후조리 이용후기</a></li>
+                        <li><a href="#">온라인 예약</a></li>
+                        
+                        <li><a href="#">예약 확인</a></li>
+                        
+                        <li><a href="#">교육원</a><ul class="subMenu">
+                        <li><a href="#">전문강사 소개</a></li>
+                        <li><a href="#">산후관리사 교육</a></li>
+                        <li><a href="#">해피베이비 산모교실</a></li>
+                        <li><a href="#">교육 및 행사</a></li>
+                    </ul></li>
+                        <!--clear-->
+                    </ul>
+                    <!--clear-->
+                </div>
+
+            </div>
+        </header>
+        <div class="mainimg">
+            <div class="inner">
+                <div class="lt">
+                    <p>해피베이비</p>
+                    <h1>아기의 건강은<br>엄마로부터<span>시작됩니다.</span></h1>
+                    <div class="btn">
+                        <img src="img/kakao.png">
+                    </div>
+                </div>
+                <!--clear-->
+                <div class="rt">
+                    <img src="img/mainimg.jpg">
+                </div>
+                <!--clear-->
+            </div>
+            <!--clear-->
+        </div>
+
+
+        <main id="contents">
+            <div class="tv">
+                <h2>HAPPY TV</h2>
+                <section class="center slider2">
+                    <div>
+                        <img src="img/cp.png">
+                    </div>
+                    <div>
+                        <img src="img/cp.png">
+                    </div>
+                    <div>
+                        <img src="img/cp.png">
+                    </div>
+                   <div>
+                        <img src="img/cp.png">
+                    </div>
+                    <div>
+                        <img src="img/cp.png">
+                    </div>
+                    <div>
+                        <img src="img/cp.png">
+                    </div>
+                </section>
+               
+                
+            </div>
+
+            <div class="story">
+                <h2>HAPPY STORY</h2>
+                <div class="box_set">
+                    <div class="box1">
+                        <img src="img/1.png">
+                        <h2>이용후기</h2>
+                        <div></div>
+                    </div>
+                    <div class="box2">
+                        <img src="img/2.png">
+                        <h2>서비스 이용 및 요금안내</h2>
+                        <div></div>
+                    </div>
+                    <div class="box3">
+                        <img src="img/3.png">
+                        <h2>산모교실</h2>
+                        <div></div>
+                    </div>
+
+                </div>
+                <!--clear-->
+            </div>
+
+            <div class="community">
+                <h2>HAPPY COMMUNITY</h2>
+                <div class="box_set">
+                    <div class="box1">
+                        <img src="img/4.png">
+                        <h2>1:1 진료상담</h2>
+                        <div></div>
+                    </div>
+                    <div class="box2">
+                        <img src="img/5.png">
+                        <h2>카톡상담</h2>
+                        <div></div>
+                    </div>
+                    <div class="box3">
+                        <img src="img/6.png">
+                        <h2>병원소식</h2>
+                        <div></div>
+                    </div>
+
+                </div>
+
+                <!--clear-->
+            </div>
+            <!--clear-->
+            <div class="service">
+                <h2>HAPPY SERVICE</h2>
+                <div class="box_set">
+                    <div class="box1">
+                        <h3>산모서비스</h3>
+                        <p>다양한 산모 케어 서비스를 통해 정성을 다해<br>
+                            돌보아 드립니다.</p>
+                     
+                        <div class="btn">더보기</div>
+                      
+                    </div>
+                    <div class="box2">
+                        <h3>신생아 서비스</h3>
+                        <p>신생아의 목욕, 배꼽소독, 우유병소독, 세탁 등<br>
+                            위생, 건강관리가 이루어 집니다.</p>
+                        
+                        <div class="btn">더보기</div>
+                        
+                    </div>
+                    <div class="box3">
+                        <h3>기타 서비스</h3>
+                        <p>세탁,청소,장보기,남편,큰아이 돌보기등을<br>
+                            지원하는 서비스입니다. </p>
+                        
+                        <div class="btn">더보기</div>
+                       
+                    </div>
+                    <!--clear-->
+                </div>
+            </div>
+
+
+
+        </main>
+        <section class="service2">
+            <div class="inner">
+                <div class="text">
+                    <h3>맞춤형<br>
+                        산후 관리사</h3>
+                    <p>산모와 신생아의 건강을 지키는 지혜로운<br>
+                        엄마로 만들어 드립니다.</p>
+                    
+                    <div class="btn">더보기</div>
+                </div>
+                <div class="img">
+                    <img src="img/baby.jpg">
+                </div>
+            </div>
+            <!--clear-->
+        </section>
+
+        <section class="map">
+
+            <div class="number">
+                <h3>@해피베이비</h3>
+                <h1>1577-7853</h1>
+                <p>서울특별시 영등포구 국회대로53길 23 4층</p>
+                <div>오시는길˙주차안내</div>
+                <ul class="bt">
+                    <li>1:1 진료상담</li>
+                    <li>카카오톡 상담</li>
+                    <li>자주하는 질문</li>
+                <!--clear--> 
+                </ul>
+                
+            </div>
+            <div class="img">
+                <img src="img/map.png">
+            </div>
+
+            <!--clear--> 
+        </section>
+        <footer id="footer">
+            <div class="topfooter">
+                <div class="inner">
+                    <div class="lt">
+                        <ul>
+                            <li>고객불편사항 접수</li>
+                            <li>개인정보취급방침</li>
+                            <li>이용약관</li>
+                        </ul>
+                        <!--clear--> 
+                    </div>
+                    <div class="rt">
+                   
+                                <ul>
+                            <li><img src="img/b.jpg"></li>
+                            <li><img src="img/k.jpg"></li>
+                            <li><img src="img/n.jpg"></li>
+                        </ul>
+                        <!--clear--> 
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="bottomfooter">
+               <div class="inner">
+                <div class="lt">
+                    <ul>
+                        <li>대표: 석준희</li>
+                        <li>대표전화: 1577-7853</li>
+                        <li>사업자등록번호: 124-94-56003</li>
+                        <li>개인정보관리책임자: 전승원</li>
+                        <li>서울특별시 영등포구 국회대로53길 23 4층</li>
+                        <li>의료기관명칭: 해피베이비</li>
+                        <!--clear-->
+                    </ul>
+                     
+                    <p>CopyrightⓒHappybaby.com co.,Ltd.All Rights Reserved</p>
+                    
+                </div>
+                <div class="rt">
+                    <img src="img/logo2.png">
+                    <!--clear--> 
+                </div>
+                 
+            </div>
+            </div>
+        </footer>
+
+    </div>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script>
+        var j220 = jQuery.noConflict();
+        
+    </script>
+    <script src="js/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        j220(document).on('ready', function() {
+            j220(".regular").slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                responsive: [ // 반응형 웹 구현 옵션
+                    {
+                        breakpoint: 1279, //화면 사이즈 960px
+                        settings: {
+                            //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768, //화면 사이즈 768px
+                        settings: {
+                            //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경7
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+            j220(".center").slick({
+                dots: true,
+                infinite: true,
+                centerMode: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+
+                responsive: [ // 반응형 웹 구현 옵션
+                    {
+                        breakpoint: 1279, //화면 사이즈 960px
+                        settings: {
+                            //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768, //화면 사이즈 768px
+                        settings: {
+                            //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+
+
+            });
+
+        });
+    </script>
+
+</body></html>
